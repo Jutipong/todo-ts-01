@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { Todos } from '../../store/Todo';
-let todoName = $ref<string>('');
+let name = $ref<string>('');
 
 const onAdd = () => {
-  Todos.value.unshift({ id: Todos.value.length + 1, name: todoName });
-  todoName = '';
+  Todos.value.unshift({ id: Todos.value.length + 1, name });
+  name = '';
 };
 </script>
 
 <template>
   <div class="container">
-    Todo: <input type="text" v-model="todoName" style="margin: 5px" />
-    <button :disabled="todoName.length === 0" @click="onAdd">Add</button>
+    Todo: <input type="text" v-model="name" style="margin: 5px" />
+    <button :disabled="name.length === 0" @click="onAdd">Add</button>
   </div>
 </template>
 

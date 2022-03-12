@@ -4,12 +4,12 @@ import { Action, Todos, Todo, Enum } from '../../store/Todo';
 import { TodoType, TodoInit } from '../../types/Todo';
 
 const onUpdate = () => {
-  let obj = Todos.value.find((r) => r.id === Todo.value.id)!!;
+  let obj = Todos.value.find((r) => r.id === todo.id)!!;
   obj.name = todo.name;
-  onClear();
+  onCancel();
 };
 
-const onClear = () => {
+const onCancel = () => {
   Action.value = Enum.ADD;
   Todo.value = TodoInit;
 };
@@ -24,7 +24,7 @@ onMounted(() => {
   <div class="container">
     Todo: <input type="text" v-model="todo.name" style="margin: 5px" />
     <button :disabled="todo.name.length === 0" @click="onUpdate">Update</button>
-    <button @click="onClear">Cancel</button>
+    <button @click="onCancel">Cancel</button>
   </div>
 </template>
 
